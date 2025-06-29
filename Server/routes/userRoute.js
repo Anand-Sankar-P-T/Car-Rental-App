@@ -1,5 +1,5 @@
 const express = require('express')
-const {register,login,profile,updateProfile}=require('../controllers/userController')
+const {register,login,profile,updateProfile,checkUser}=require('../controllers/userController')
 const authUser=require('../middlewares/userAuth')
 const userRouter = express.Router()
 
@@ -12,6 +12,7 @@ userRouter.post('/register',register)
 // //profile
 userRouter.get('/profile', authUser, profile);
 userRouter.put('/update', authUser, updateProfile);
+userRouter.get('/check-user',authUser,checkUser);
 // //delete
 // userRouter.delete('/delete/:userId')
 // //checkUser

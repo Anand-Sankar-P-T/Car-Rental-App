@@ -120,8 +120,19 @@ const updateProfile = async (req, res) => {
   }
 };
 
+const checkUser = async (req,res,next) =>{
+      try {
+        res.json({
+          message:"User authorized",loggedinUser:req.user._id
+        })
+      } catch (error) {
+        res.status(500).json({message:'server error'})
+        
+      }
+}
+
 
 module.exports = {
-  register,login,profile,updateProfile
+  register,login,profile,updateProfile,checkUser
 };
 
